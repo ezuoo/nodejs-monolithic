@@ -1,10 +1,6 @@
 const mysql = require('mysql');
-const conn = {
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'monolithic'
-};
+const config = require('./config').config;
+const conn = config;
 
 exports.onRequest = function (res, method, pathname, params, cb) {
     

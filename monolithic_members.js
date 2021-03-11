@@ -1,10 +1,6 @@
 const mysql = require('mysql');
-const conn = {
-    host: 'localhost',
-    user: 'root',
-    password: '1234',
-    database: 'monolithic'
-};
+const config = require('./config').config;
+const conn = config;
 
 exports.onRequest = function (res, method, pathname, params, cb) {
     switch (method) {
@@ -118,7 +114,7 @@ function unregister(method, pathname, params, cb) {
         errorcode: 0,
         errormessage: "success"
     };
-    
+
     if (params.username == null) {
         response.errorcode = 1;
         response.errormessage = "Invalid Parameters";
