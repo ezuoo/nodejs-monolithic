@@ -32,9 +32,8 @@ var server = http.createServer( (req, res) => {
             }
             onRequest(res, method, pathname, params);
         });
-    } else {
+    } else {       
         onRequest(res, method, pathname, uri.query);
-    
     }
 }).listen(8000);
 
@@ -46,22 +45,24 @@ var server = http.createServer( (req, res) => {
  * @param  params  입력 파라미터
  */
 function onRequest(res, method, pathname, params) {
-   switch(pathname) {
-       case '/members':
-           members.onRequest(res, method, pathname, params, response);
-           break;
+    
+    switch(pathname.split('/')[1]) {
+        case 'members':
+            members.onRequest(res, method, pathname, params, response);
+            break;
 
-       case '/goods':
+        case 'goods':
             goods.onRequest(res, method, pathname, params, response);
             break;
 
-       case '/purchases':
+        case 'purchases':
             purchases.onRequest(res, method, pathname, params, response);
             break;
-       default:
-           res.writeHead(404);
-           return res.end();
-   }
+
+        default:
+            res.writeHead(404);
+            return res.end();
+    }
 }
 
 /**

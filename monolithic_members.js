@@ -3,6 +3,7 @@ const config = require('./config').config;
 const conn = config;
 
 exports.onRequest = function (res, method, pathname, params, cb) {
+
     switch (method) {
         case "POST":
             return register(method, pathname, params, (response) => { 
@@ -30,12 +31,7 @@ function register(method, pathname, params, cb) {
         errorcode: 0,
         errormessage: "success"
     };
-    console.log('in register func');
-    console.log("members POST");
-    console.log(`username : ${params.username}`);
-    console.log(`password : ${params.password}`);
-
-    if (params.username == null || params.password == null) {
+    if (params.username === undefined || params.password === undefined) {
         response.errorcode = 1;
         response.errormessage = "Invalid Parameters";
         cb(response);
@@ -47,13 +43,9 @@ function register(method, pathname, params, cb) {
                 response.errorcode = 1;
                 response.errormessage = error;                
             }
-            console.log('in register before cb(response)');
             cb(response);
-            console.log('in register after cb(response)');
         });
-        console.log('in register before db conn.end');
         connection.end();
-        console.log('in register after db conn.end');
     }
 }
 
@@ -114,15 +106,15 @@ function unregister(method, pathname, params, cb) {
         errorcode: 0,
         errormessage: "success"
     };
-
-    if (params.username == null) {
+    
+    if (pathname.split("/")[2] === undefined) {
         response.errorcode = 1;
         response.errormessage = "Invalid Parameters";
         cb(response);
     } else {
         var connection = mysql.createConnection(conn);
         connection.connect();
-        connection.query("delete from  members where username = '" + params.username + "';", (error, results, fields) => {
+        connection.query("delete from  members where id = '" + pathname.split("/")[2] + "';", (error, results, fields) => {
             if (error) {
                 response.errorcode = 1;
                 response.errormessage = error;                
