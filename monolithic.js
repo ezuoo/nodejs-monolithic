@@ -35,7 +35,9 @@ var server = http.createServer( (req, res) => {
     } else {       
         onRequest(res, method, pathname, uri.query);
     }
-}).listen(8000);
+}).listen(8000, () => {
+    console.log('Server Listening on 8000');
+  });
 
 /**
  * 요청에 대해 회원 관리, 상품 관리, 구매 관리 모듈별로 분기

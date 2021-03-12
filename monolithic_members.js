@@ -3,7 +3,7 @@ const config = require('./config').config;
 const conn = config;
 
 exports.onRequest = function (res, method, pathname, params, cb) {
-
+    console.log(pathname)
     switch (method) {
         case "POST":
             return register(method, pathname, params, (response) => { 
@@ -63,7 +63,7 @@ function inquiry(method, pathname, params, cb) {
         errormessage: "success"
     };
     
-    if (params.username === undefined || params.password === undefined) {
+    if (pathname.split('/')[2] === undefined) {
         let connection = mysql.createConnection(conn);
         connection.connect();
         connection.query("select * from  members", (error, results, fields) => {
@@ -80,12 +80,12 @@ function inquiry(method, pathname, params, cb) {
     } else {
         var connection = mysql.createConnection(conn);
         connection.connect();
-        connection.query("select id from  members where username = '" + params.username + "' and password = '" + params.password +"';", (error, results, fields) => {
-            if (error || results.length == 0) {
+        connection.query("select * from  members where id=" + pathname.split('/')[2], (error, results, fields) => {
+            if (error || results.length === 0) {
                 response.errorcode = 1;
-                response.errormessage = error ? error : "invalid password";
+                response.errormessage = error ? error : "Not found USER";
             } else {
-                response.userid = results[0].id;
+                response.user = results[0];
             }
             cb(response);
         });

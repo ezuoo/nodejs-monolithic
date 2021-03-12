@@ -3,7 +3,7 @@ API Server monolithic architecture
 
 
 
-# NodeJs Monolithic API development 
+# NodeJs Monolithic Architecture API development 
 ![react](https://img.shields.io/badge/NextJs-@10.0.0-important.svg)
 ![react](https://img.shields.io/badge/ReactJs-@17.0.1-important.svg)
 ![react](https://img.shields.io/badge/ReactDom-@17.0.1-important.svg)
