@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link'
+
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 
@@ -10,35 +12,38 @@ export default function Home() {
       </Head>
       <main>
         <h1 className={utilStyles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <a href="https://microservices.io/patterns/monolithic.html">Monolithic Architecture</a>{' '}
+          Web Application 
         </h1>
 
         <p className={utilStyles.description}>
-          Get started by editing <code>pages/index.js</code>
+           <code>&darr; simple APIs &darr;</code>
         </p>
 
         <div className={utilStyles.grid}>
-          <a href="https://nextjs.org/docs" className={utilStyles.card}>
-            <h3>&larr; Member</h3>
-          </a>
+          <Link href='/path/members'>
+            <a className={utilStyles.card}>
+              <h3>&larr; Members</h3>
+            </a>
+          </Link>
 
-          <a href="https://nextjs.org/learn" className={utilStyles.card}>
-            <h3>Goods &rarr;</h3>
-          </a>
+          <Link href='/path/goods'>
+            <a className={utilStyles.card}>
+              <h3>Goods &rarr;</h3>
+            </a>
+          </Link>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={utilStyles.card}
-          >
-            <h3>&larr; Purchases</h3>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={utilStyles.card}
-          >
-            <h3>Admin &rarr;</h3>
-          </a>
+          <Link href='/path/purchases'>
+            <a className={utilStyles.card}>
+              <h3>&larr; Purchases</h3>
+            </a>
+          </Link>
+          
+          <Link href='/admin/index'>
+            <a className={utilStyles.card}>
+              <h3>Admin &rarr;</h3>
+            </a>
+          </Link>
         </div>
       </main>
     </Layout>
