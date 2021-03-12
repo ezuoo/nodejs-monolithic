@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "nodemon monolithic.js",
-    "dev": "concurrently \"npm run start\" \"npm run start --prefix client\""
+    "dev": "concurrently \"npm run start\" \"npm run dev --prefix client\""
   },
   "repository": {
     "type": "git",

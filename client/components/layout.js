@@ -1,11 +1,11 @@
 import Head from 'next/head'
 import styles from './layout.module.css'
-// import utilStyles from '../styles/utils.module.css'
+import utilStyles from '../styles/utils.module.css'
 
-export const siteTitle = 'boilerplate'
+export const siteTitle = 'Monolithic App'
 
 export default function Layout({ children, home }) {
-  return (
+  return (  
     <div className={styles.container}>
       <Head>
         <link rel="icon" href="/favicon.ico" />
@@ -22,10 +22,20 @@ export default function Layout({ children, home }) {
         <meta name="og:title" content={siteTitle} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header className={styles.header}>
+      {/* <header className={styles.header}>
         Header
-      </header>
+      </header> */}
       <main>{children}</main>
+      <footer>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by{' '}
+          <img src="/vercel.svg" alt="Vercel Logo" className={utilStyles.logo} />
+        </a>
+      </footer>
     </div>
   )
 }
