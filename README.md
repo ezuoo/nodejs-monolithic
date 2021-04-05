@@ -9,20 +9,7 @@ API Server monolithic architecture
 ![react](https://img.shields.io/badge/ReactDom-@17.0.1-important.svg)
 ![mysql](https://img.shields.io/badge/Mysql-@2.18.1-important.svg)
 
-모놀리식 서비스 아키텍쳐를 기반으로 간단한 웹 애플리케이션을 구현해보았다.
+모놀리식 서비스 아키텍쳐를 기반으로 간단한 웹 애플리케이션을 구현해보았습니다.
 
-
-## Getting Started
-```
-git clone https://github.com/ezuoo/nodejs-monolithic.git
-```
-
-## Installation
-```
-npm install
-
-cd client
-npm install
-```
 
 
